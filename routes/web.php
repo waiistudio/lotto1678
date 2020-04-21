@@ -24,3 +24,4 @@ Route::get('/member', 'MemberController@showMember');
 Route::get('/add', 'MemberController@addMem');
 Route::get('/test', 'MemberController@test');
 Route::post('/saveMem', 'MemberController@saveMem');
+Route::resource('questions', 'QuestionsController');
