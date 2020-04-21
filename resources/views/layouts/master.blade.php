@@ -63,7 +63,7 @@
                                 <button type="button" class="btn btn-warning waves-effect width-md waves-light">ระดับของคุณ : Senoir</button>
                                     @break
                                 @case(3)
-                                    <button type="button" class="btn btn-info waves-effect width-md waves-light">ระดับของคุณ : Master</button>
+                                    <button type="button" class="btn btn-info waves-effect width-md waves-light">ระดับของคุณ : Masters</button>
                                     @break
                                 @case(4)
                                     ​<button type="button" class="btn btn-primary waves-effect width-md waves-light">ระดับของคุณ : Agent</button>
