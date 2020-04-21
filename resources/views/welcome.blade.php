@@ -70,7 +70,7 @@
                         <a class="btn btn-success" href="{{ url('/home') }}">เข้าสู่หน้าหลัก</a>
                     @else
                         <a type="button" class="btn btn-success waves-effect width-md waves-light"  href="{{ route('login') }}">เข้าสู่ระบบ</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        {{-- <a href="{{ route('register') }}">Register</a> --}}
 
                     @endauth
                
