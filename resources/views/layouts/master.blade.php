@@ -12,14 +12,16 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- App css -->
-    <link href="assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-
+    <link href=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/libs/datatables/responsive.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/libs/datatables/buttons.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/libs/datatables/select.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/css/icons.min.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/css/app.min.css') }} " rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <script src="{{ URL::asset('assets/js/app.js') }}" defer></script>
+  
 </head>
 
 <body>
@@ -237,17 +239,17 @@
 
 
     <!-- Vendor js -->
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/libs/datatables/dataTables.bootstrap4.js"></script>
-    <script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
-    <script src="assets/libs/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="assets/libs/datatables/dataTables.buttons.min.js"></script>
-    <script src="assets/libs/datatables/buttons.bootstrap4.min.js"></script>
-    <script src="assets/js/pages/datatables.init.js"></script>
+    <script src=" {{ asset('assets/js/vendor.min.js') }} "></script>
+    <script src=" {{ asset('assets/libs/datatables/jquery.dataTables.min.js') }} " ></script>
+    <script src=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.js') }} "></script>
+    <script src=" {{ asset('assets/libs/datatables/dataTables.responsive.min.js') }} "></script>
+    <script src=" {{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }} "></script>
+    <script src=" {{ asset('assets/libs/datatables/dataTables.buttons.min.js') }} "></script>
+    <script src=" {{ asset('assets/libs/datatables/buttons.bootstrap4.min.js') }} "></script>
+    <script src=" {{ asset('assets/js/pages/datatables.init.js') }} "></script>
 
     <!-- App js-->
-    <script src="assets/js/app.min.js"></script>
+    <script src=" {{ asset('assets/js/app.min.js') }} "></script>
 
 </body>
 
