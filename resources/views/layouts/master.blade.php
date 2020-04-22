@@ -163,7 +163,7 @@
                     <ul class="navigation-menu">
 
                         <li class="has-submenu">
-                            <a href="/questions"><i class="fas fa-user-friends"></i>test</a>
+                            <a href="/questions"><i class="fas fa-info"></i>สอบถามการใช้งาน</a>
                         </li>
 
                     </ul>
