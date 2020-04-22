@@ -13,9 +13,11 @@ class QuestionsController extends Controller
      */
     public function index()
     {
+        // \DB::enableQueryLog();
         $header= 'ddd';
-        $questions = Questions::latest()->paginate(5);
-        return view('questions.index', compact('questions','header'));
+        $questions = Questions::with('user')->latest()->paginate(10);
+        return  view('questions.index', compact('questions','header'));
+        //  dd(\DB::getQueryLog());
     }
 
     /**
