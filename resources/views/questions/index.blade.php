@@ -10,7 +10,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">คำถามทั้งหมด</div>
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h5>คำถามทั้งหมด</h5>
+                        <div class="ml-auto">
+                            <a href=" {{ route('questions.create') }} " class="btn btn-success"><i class="fa fa-plus"> เพิ่มคำถาม</i></a>
+                        </div>
+                    </div>
+                    
+                </div>
 
                 <div class="card-body">
                    @foreach ($questions as $question)

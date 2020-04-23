@@ -27,7 +27,9 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //
+        $header= 'เพิ่มข้อคำถาม';
+        $question = new Questions();
+        return view ('questions.create',compact('question','header'));
     }
 
     /**
