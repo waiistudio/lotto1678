@@ -16,11 +16,11 @@
     <link href=" {{ asset('assets/libs/datatables/responsive.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/libs/datatables/buttons.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/libs/datatables/select.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
-    <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('assets/css/bootstrap.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/css/icons.min.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/css/app.min.css') }} " rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-    <script src="{{ URL::asset('assets/js/app.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <script src="{{ URL::asset('js/app.js') }}" defer></script> --}}
   
 </head>
 

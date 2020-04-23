@@ -14,7 +14,7 @@ class QuestionsController extends Controller
     public function index()
     {
         // \DB::enableQueryLog();
-        $header= 'ddd';
+        $header= 'สอบถามการใช้งานระบบ';
         $questions = Questions::with('user')->latest()->paginate(5);
         return  view('questions.index', compact('questions','header'));
         //  dd(\DB::getQueryLog());
