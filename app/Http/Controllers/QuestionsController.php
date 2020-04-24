@@ -12,6 +12,10 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         // \DB::enableQueryLog();
@@ -68,7 +72,10 @@ class QuestionsController extends Controller
     public function edit(Questions $question )
     {
         $header = 'แก้ไขคำถาม';
-        return view('questions.edit',\compact('header','question'));
+        if (\Gate::allows('update-question', $question)) {
+            return view('questions.edit',\compact('header','question'));
+        }
+        \abort(403,"Access Denied");
     }
 
     /**
@@ -80,9 +87,12 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Questions $question)
     {
+        if (\Gate::allows('update-question', $question)) {
         $question->update($request->only('title','body'));
 
         return \redirect('questions')->with('success',"แก้ไขคำถามเสร็จสิ้น");
+        }
+        \abort(403,"Access Denied");
     }
 
     /**
@@ -93,8 +103,11 @@ class QuestionsController extends Controller
      */
     public function destroy(Questions $question)
     {
+        if (\Gate::allows('delete-question', $question)) {
         $question->delete();
         
         return \redirect('questions')->with('success',"ลบคำถามเสร็จสิ้น");
+    }
+        \abort(403,"Access Denied");
     }
 }
