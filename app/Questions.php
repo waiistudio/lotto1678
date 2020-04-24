@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Questions extends Model
 {
     
-    protected $fillable = ['title','body'];
+    protected $fillable = ['title','body','slug'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -16,12 +16,12 @@ class Questions extends Model
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['slug'] = $value;
     }
 
     public function getUrlAttribute()
     {
-        return route('questions.show',$this->id);
+        return route('questions.show',$this->slug);
     }
 
     public function getCreatedDateAttribute()
@@ -37,5 +37,13 @@ class Questions extends Model
             return "answered";
         }
             return "unanswered";
+    }
+
+
+    public function getBodyHtmlAttribute()
+    {
+        $Parsedown = new \Parsedown();
+
+        return $Parsedown->text($this->body);
     }
 }

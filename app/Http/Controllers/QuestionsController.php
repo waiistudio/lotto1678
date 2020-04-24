@@ -41,7 +41,7 @@ class QuestionsController extends Controller
      */
     public function store(AskQuestionRequest $request)
     {
-        $request->user()->questions()->create($request->only('title', 'body'));
+        $request->user()->questions()->create($request->only('title', 'body','slug'));
         return redirect()->route('questions.index')->with('success','ส่งคำถามเรียบร้อยแล้ว');
     }
 
@@ -51,9 +51,12 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Questions $question)
     {
-        //
+        // dd($question->body);
+        $header = 'รายละเอียดคำถาม';
+        $question->increment('views');
+        return \view('questions.show', \compact('question', 'header'));
     }
 
     /**
