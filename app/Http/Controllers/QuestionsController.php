@@ -62,9 +62,10 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Questions $question )
     {
-        //
+        $header = 'แก้ไขคำถาม';
+        return view('questions.edit',\compact('header','question'));
     }
 
     /**
@@ -74,9 +75,11 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AskQuestionRequest $request, Questions $question)
     {
-        //
+        $question->update($request->only('title','body'));
+
+        return \redirect('questions')->with('success',"แก้ไขคำถามเสร็จสิ้น");
     }
 
     /**

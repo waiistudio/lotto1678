@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h5>เพิ่มคำถาม</h5>
+                        <h5>แก้ไขคำถาม</h5>
                         <div class="ml-auto">
                             <a href=" {{ route('questions.index') }} " class="btn btn-success"><i
                                     class="fa fa-arrow-left"> กลับไปหน้ารวมคำถาม</i></a>
@@ -22,8 +22,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form action=" {{ route('questions.store') }} " method="POST">
-                      @include('questions._form',['buttonText'=>"บันทึกคำถาม"])
+                    <form action=" {{ route('questions.update', $question->id) }} " method="POST">
+
+                        {{ method_field('PUT') }}
+                      @include('questions._form',['buttonText'=>"แก้ไขคำถาม"])
                     </form>
                 </div>
             </div>
