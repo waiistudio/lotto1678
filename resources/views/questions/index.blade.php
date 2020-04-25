@@ -30,7 +30,7 @@
                             </div>
                             <div class="d-flex flex-column counters">
                                 <div class="status {{ $question->status }} ">
-                                    <strong>{{ $question->answers }} </strong> คำตอบ
+                                    <strong>{{ $question->answers_count }} </strong> คำตอบ
                                 </div>
                             </div>
                            
