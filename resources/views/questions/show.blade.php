@@ -23,6 +23,48 @@
 
                 <div class="card-body">
                     <p> {{ $question->body }} </p>
+                    <div class="float-right">
+                        <span class="text-muted"> ถามเมื่อ : {{ $question->created_date }} </span>
+                        <div class="media mt-2">
+                            <a class="pr-2" href=" {{ $question->user->url }} ">
+                                <img src=" {{ $question->user->avatar }} " width="20px">
+                            </a>
+                            <div class="media-body">
+                                <a href=" {{ $question->user->url }} "> {{ $question->user->name }} </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2> {{ $question->answers_count }} คำตอบ </h2>
+                    </div>
+                    <hr>
+                    @foreach ($question->answers as $answer)
+                        <div class="media">
+                            <div class="media-body">
+                                <p> {{ $answer->body }} </p>
+                                <div class="float-right">
+                                    <span class="text-muted"> ตอบเมื่อ : {{ $answer->created_date }} </span>
+                                    <div class="media mt-2">
+                                        <a class="pr-2" href=" {{ $answer->user->url }} ">
+                                            <img src=" {{ $answer->user->avatar }} " width="20px">
+                                        </a>
+                                        <div class="media-body">
+                                            <a href=" {{ $answer->user->url }} "> {{ $answer->user->name }} </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
                 </div>
             </div>
         </div>
