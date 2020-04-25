@@ -10886,6 +10886,7 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< Updated upstream
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -10931,3 +10932,5 @@ form.form-delete {
   display: inline;
 }
 
+=======
+>>>>>>> Stashed changes
