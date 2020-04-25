@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    public function question()
+    public function questions()
     {
         return $this->belongsTo(Questions::class);
     }
@@ -20,5 +20,15 @@ class Answer extends Model
         $Parsedown = new \Parsedown();
 
         return $Parsedown->text($this->body);
+    }
+
+     public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($answer) {
+            $answer->questions->increment('answers_count');
+            $answer->questions->save();            
+        }); 
     }
 }

@@ -47,7 +47,7 @@ class Questions extends Model
         return $Parsedown->text($this->body);
     }
 
-    public function answer()
+    public function answers()
     {
         return $this->hasMany(Answer::class);
     }
