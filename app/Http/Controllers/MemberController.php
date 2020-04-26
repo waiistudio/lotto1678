@@ -19,13 +19,13 @@ class MemberController extends Controller
         $header = 'เพิ่มสมาชิก';
         $user_data = user_data::all();
         $levels = levels::all();
-        return view('pages/addmem', compact('header','user_data',('levels')));
+        return view('members/addmem', compact('header','user_data',('levels')));
     }
 
     public function showMember (){
         $header ='ข้อมูลสมาชิก';
         $user_data = user_data::all();
-        return view('pages/member', compact('header','user_data'));
+        return view('members/member', compact('header','user_data'));
     }
 
 

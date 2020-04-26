@@ -21,7 +21,7 @@
     <link href=" {{ asset('assets/css/app.min.css') }} " rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <script src="{{ URL::asset('js/app.js') }}" defer></script> --}}
-  
+
 </head>
 
 <body>
@@ -46,81 +46,55 @@
                         <!-- End mobile menu toggle-->
                     </li>
                     <li class="d-none d-sm-block">
-                            
+
                         <div style="margin-top: 15px; margin-right: 20px;" class="app-search-box">
-                            <button class="btn btn-icon waves-effect btn-secondary"> <i class=" fab fa-bitcoin"> เครดิตของคุณ :</i> </button>
-                            
+                            <button class="btn btn-icon waves-effect btn-secondary"> <i class=" fab fa-bitcoin">
+                                    เครดิตของคุณ :</i> </button>
+
                         </div>
-                   
-                </li>
+
+                    </li>
                     <li class="d-none d-sm-block">
-                            
+
                         <div style="margin-top: 15px; margin-right: 10px;" class="app-search-box">
                             {{--   --}}
                             @switch(Auth::user()->status)
-                                @case(1)
-                                <button type="button" class="btn btn-danger waves-effect width-md waves-light">ระดับของคุณ : Webmaster</button>
-                                    @break
-                                @case(2)
-                                <button type="button" class="btn btn-warning waves-effect width-md waves-light">ระดับของคุณ : Senoir</button>
-                                    @break
-                                @case(3)
-                                    <button type="button" class="btn btn-info waves-effect width-md waves-light">ระดับของคุณ : Masters</button>
-                                    @break
-                                @case(4)
-                                    ​<button type="button" class="btn btn-primary waves-effect width-md waves-light">ระดับของคุณ : Agent</button>
-                                    @break
-                                @case(5)
-                                    <button type="button" class="btn btn-success waves-effect width-md waves-light">ระดับของคุณ : Memberr</button>
-                                    @break
-                                @default
-                                    
-                            @endswitch    
-                            
+                            @case(1)
+                            <button type="button" class="btn btn-danger waves-effect width-md waves-light">ระดับของคุณ :
+                                Webmaster</button>
+                            @break
+                            @case(2)
+                            <button type="button" class="btn btn-warning waves-effect width-md waves-light">ระดับของคุณ
+                                : Senoir</button>
+                            @break
+                            @case(3)
+                            <button type="button" class="btn btn-info waves-effect width-md waves-light">ระดับของคุณ :
+                                Masters</button>
+                            @break
+                            @case(4)
+                            ​<button type="button" class="btn btn-primary waves-effect width-md waves-light">ระดับของคุณ
+                                : Agent</button>
+                            @break
+                            @case(5)
+                            <button type="button" class="btn btn-success waves-effect width-md waves-light">ระดับของคุณ
+                                : Member</button>
+                            @break
+                            @default
+
+                            @endswitch
+
                         </div>
-                   
-                </li>
+
+                    </li>
 
                     <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
-                            role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src=" {{ asset('assets/images/users/user-1.jpg') }} " alt="user-image" class="rounded-circle">
+                        <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
+                            <img src=" {{ asset('assets/images/users/user-1.jpg') }} " width="25px;" alt="user-image"
+                                class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
+                                {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                         
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>บัญชีผู้ใช้ของฉัน</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-plus"></i>
-                                <span>เพิ่มข้อมูลสมาชิก</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-list"></i>
-                                <span>รายงานการขาย</span>
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-
-                            <!-- item-->
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                ออกจากระบบ
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
                     </li>
                 </ul>
 
@@ -211,6 +185,7 @@
 
         </div> <!-- end container -->
     </div>
+
     <!-- end wrapper -->
 
     <!-- ============================================================== -->
@@ -236,20 +211,125 @@
     </footer>
     <!-- end Footer -->
 
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div class="rightbar-title">
+            <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                <i class="dripicons-cross noti-icon"></i>
+            </a>
+            <h4 class="m-0 text-white">ข้อมูลส่วนตัว</h4>
+        </div>
+        <div class="slimscroll-menu rightbar-content">
+            <!-- User box -->
+            <div class="user-box">
+                <div class="user-img">
+                    <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+                        class="rounded-circle img-fluid">
+                    <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
+                </div>
 
+                <h5><a href="javascript: void(0);"> {{ Auth::user()->name }} </a> </h5>
+                <p class="text-muted mb-0"><small> ระดับ : 
+                    @switch(Auth::user()->status)
+                    @case(1)
+                        Webmaster
+                    @break
+                    @case(2)
+                        : Senoir
+                    @break
+                    @case(3)
+                        Masters
+                    @break
+                    @case(4)
+                        : Agent
+                    @break
+                    @case(5)
+                        : Member
+                    @break
+                    @default
 
-    <!-- Vendor js -->
-    <script src=" {{ asset('assets/js/vendor.min.js') }} "></script>
-    <script src=" {{ asset('assets/libs/datatables/jquery.dataTables.min.js') }} " ></script>
-    <script src=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.js') }} "></script>
-    <script src=" {{ asset('assets/libs/datatables/dataTables.responsive.min.js') }} "></script>
-    <script src=" {{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }} "></script>
-    <script src=" {{ asset('assets/libs/datatables/dataTables.buttons.min.js') }} "></script>
-    <script src=" {{ asset('assets/libs/datatables/buttons.bootstrap4.min.js') }} "></script>
-    <script src=" {{ asset('assets/js/pages/datatables.init.js') }} "></script>
+                    @endswitch
+                    </small></p>
+                    <p class="text-muted mb-0"><small>จำนวนเครดิต :</small></p>
+            </div>
 
-    <!-- App js-->
-    <script src=" {{ asset('assets/js/app.min.js') }} "></script>
+            <!-- Settings -->
+            <hr class="mt-0" />
+            <h5 class="pl-3">Basic Settings</h5>
+            <hr class="mb-0" />
+
+            <div class="p-3">
+                <div class="checkbox checkbox-primary mb-2">
+                    <input id="Rcheckbox1" type="checkbox" checked>
+                    <label for="Rcheckbox1">
+                        Notifications
+                    </label>
+                </div>
+                <div class="checkbox checkbox-primary mb-2">
+                    <input id="Rcheckbox2" type="checkbox" checked>
+                    <label for="Rcheckbox2">
+                        API Access
+                    </label>
+                </div>
+                <div class="checkbox checkbox-primary mb-2">
+                    <input id="Rcheckbox3" type="checkbox">
+                    <label for="Rcheckbox3">
+                        Auto Updates
+                    </label>
+                </div>
+                <div class="checkbox checkbox-primary mb-2">
+                    <input id="Rcheckbox4" type="checkbox" checked>
+                    <label for="Rcheckbox4">
+                        Online Status
+                    </label>
+                </div>
+                <div class="checkbox checkbox-primary mb-0">
+
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                        ออกจากระบบ
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                </div>
+
+                <!-- Timeline -->
+                <hr class="mt-0" />
+                <h5 class="pl-3 pr-3">จำนวนสมาชิก <span class="float-right badge badge-pill badge-danger">25</span></h5>
+                <hr class="mb-0" />
+                <div class="p-3">
+                    <div class="inbox-widget">
+                        
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-6.jpg" class="rounded-circle"
+                                    alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);"
+                                    class="text-dark">Adhamdannaway</a>
+                            </p>
+                            <p class="inbox-item-text">This theme is awesome!</p>
+                        </div>
+                    </div> <!-- end inbox-widget -->
+                </div> <!-- end .p-3-->
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Vendor js -->
+        <script src=" {{ asset('assets/js/vendor.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/jquery.dataTables.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/dataTables.responsive.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/dataTables.buttons.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/datatables/buttons.bootstrap4.min.js') }} "></script>
+        <script src=" {{ asset('assets/js/pages/datatables.init.js') }} "></script>
+
+        <!-- App js-->
+        <script src=" {{ asset('assets/js/app.min.js') }} "></script>
 
 </body>
 
