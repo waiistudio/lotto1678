@@ -139,6 +139,14 @@
                     <ul class="navigation-menu">
 
                         <li class="has-submenu">
+                            <a href="/huay"><i class=" fas fa-clipboard-list"></i>หวย</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navigation-menu">
+
+                        <li class="has-submenu">
                             <a href="/questions"><i class="fas fa-info"></i>สอบถามการใช้งาน</a>
                         </li>
 
@@ -229,28 +237,28 @@
                 </div>
 
                 <h5><a href="javascript: void(0);"> {{ Auth::user()->name }} </a> </h5>
-                <p class="text-muted mb-0"><small> ระดับ : 
-                    @switch(Auth::user()->status)
-                    @case(1)
+                <p class="text-muted mb-0"><small> ระดับ :
+                        @switch(Auth::user()->status)
+                        @case(1)
                         Webmaster
-                    @break
-                    @case(2)
+                        @break
+                        @case(2)
                         : Senoir
-                    @break
-                    @case(3)
+                        @break
+                        @case(3)
                         Masters
-                    @break
-                    @case(4)
+                        @break
+                        @case(4)
                         : Agent
-                    @break
-                    @case(5)
+                        @break
+                        @case(5)
                         : Member
-                    @break
-                    @default
+                        @break
+                        @default
 
-                    @endswitch
+                        @endswitch
                     </small></p>
-                    <p class="text-muted mb-0"><small>จำนวนเครดิต :</small></p>
+                <p class="text-muted mb-0"><small>จำนวนเครดิต :</small></p>
             </div>
 
             <!-- Settings -->
@@ -302,7 +310,7 @@
                 <hr class="mb-0" />
                 <div class="p-3">
                     <div class="inbox-widget">
-                        
+
                         <div class="inbox-item">
                             <div class="inbox-item-img"><img src="assets/images/users/user-6.jpg" class="rounded-circle"
                                     alt=""></div>

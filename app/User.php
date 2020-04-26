@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany(Questions::class);
     }
 
+    public function huays()
+    {
+        return $this->hasMany(Huay::class);
+    }
+
 
     public function getUrlAttribute()
     {
