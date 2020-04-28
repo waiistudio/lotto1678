@@ -242,7 +242,7 @@ function ($) {
         });
 
         // sidebar - main menu
-        $("#side-menu").metisMenu();
+        // $("#side-menu").metisMenu();
 
         // sidebar - scroll container
         $this._resetSidebarScroll();

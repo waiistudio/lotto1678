@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Huay;
 use Illuminate\Http\Request;
+use App\Http\Resources\Test as ArticleResource;
 
-class HuayController extends Controller
+class _vueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,10 @@ class HuayController extends Controller
      */
     public function index()
     {
-        $header = 'เพิ่มหวย';
-        $huays = Huay::all();
-        return \view('huays.add', \compact('header','huays'));
+        //
+        $articles = Huay::orderBy('created_at', 'desc')->paginate(5);
+
+        return ArticleResource::collection($articles);
     }
 
     /**
@@ -26,9 +28,7 @@ class HuayController extends Controller
      */
     public function create()
     {
-        $huays = new Huay();
-        $header = 'เพิ่มหวย';
-        return \view('huays.add',compact('header','huays'));
+        //
     }
 
     /**
@@ -39,16 +39,7 @@ class HuayController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->user()->huays()->create($request->only('lottoname', 'lottoDate','status','DateExprieT'));
-        $huays = new Huay();
-        $huays->lottoname = $request->input('lottoname');
-        $huays->lottoDate = $request->input('lottoDate');
-        $huays->user_id = $request->input('id');
-        $huays->DateExpireT = $request->input('DateExpire');
-        // $date_test = $request->input('lottoDate');
-        // echo $date_test;
-        $huays->save();
-        return redirect()->route('huays.index')->with('success','hh');
+        //
     }
 
     /**
@@ -59,7 +50,7 @@ class HuayController extends Controller
      */
     public function show(Huay $huay)
     {
-        
+        //
     }
 
     /**

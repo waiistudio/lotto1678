@@ -8,6 +8,8 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="csrf_token" content=" {{ csrf_token() }} ">
+    <script>window.laravel = { csrfToken: ' {{ csrf_token() }} ' } </script>
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -139,7 +141,7 @@
                     <ul class="navigation-menu">
 
                         <li class="has-submenu">
-                            <a href="/huay"><i class=" fas fa-clipboard-list"></i>หวย</a>
+                            <a href=" {{ route('huays.index') }} "><i class=" fas fa-clipboard-list"></i>หวย</a>
                         </li>
 
                     </ul>
@@ -337,7 +339,8 @@
         <script src=" {{ asset('assets/js/pages/datatables.init.js') }} "></script>
 
         <!-- App js-->
-        <script src=" {{ asset('assets/js/app.min.js') }} "></script>
+        @yield('sc')
+        <script src=" {{ asset('assets/js/ss.js') }} "></script>
 
 </body>
 

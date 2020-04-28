@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Huay extends Model
 {
-    protected $fillable=['lottoname','lottoDate','status','DateExpire'];
+    protected $fillable=['lottoname','lottoDate','status','DateExpireT'];
 
     public function user()
     {
@@ -17,7 +17,6 @@ class Huay extends Model
     {
         $this->attributes['lottoname'] = $value;
         $this->attributes['lottoDate'] = $value;
-        $this->attributes['status'] = $value;
-        $this->attributes['DateExpire'] = $value;
+        $this->attributes['DateExpireTc'] = $value;
     }
 }

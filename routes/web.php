@@ -26,4 +26,9 @@ Route::get('/test', 'MemberController@test');
 Route::post('/saveMem', 'MemberController@saveMem');
 Route::resource('questions', 'QuestionsController')->except('show');
 Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show');
-Route::get('/huay','HuayController@addHuay');
+// Route::get('/huay','HuayController@create');
+Route::resource('huays','HuayController');
+Route::get('/vue', function (){
+    $header = 'Vue';
+    return view('vuetest.index', compact('header'));
+});
