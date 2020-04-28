@@ -48,7 +48,7 @@ class HuayController extends Controller
         // $date_test = $request->input('lottoDate');
         // echo $date_test;
         $huays->save();
-        return redirect()->route('huays.index')->with('success','hh');
+        //return redirect()->route('huays.index')->with('success','hh');
     }
 
     /**

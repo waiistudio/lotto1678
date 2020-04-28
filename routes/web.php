@@ -29,6 +29,10 @@ Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show
 // Route::get('/huay','HuayController@create');
 Route::resource('huays','HuayController');
 Route::get('/vue', function (){
-    $header = 'Vue';
+    $header = 'เพิ่มหวย';
     return view('vuetest.index', compact('header'));
 });
+
+Route::post ( '/vueitems', '_vueController@store' );
+Route::get ('getItem','_vueController@show');
+Route::post('/deleteItem/{id}','_vueController@destroy');

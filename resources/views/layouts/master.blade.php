@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- App css -->
+    <link href=" {{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/libs/datatables/responsive.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
     <link href=" {{ asset('assets/libs/datatables/buttons.bootstrap4.css') }} " rel="stylesheet" type="text/css" />
@@ -141,7 +142,7 @@
                     <ul class="navigation-menu">
 
                         <li class="has-submenu">
-                            <a href=" {{ route('huays.index') }} "><i class=" fas fa-clipboard-list"></i>หวย</a>
+                            <a href=" {{ URL::to('/vue') }} "><i class=" fas fa-clipboard-list"></i>หวย</a>
                         </li>
 
                     </ul>
@@ -330,6 +331,10 @@
 
         <!-- Vendor js -->
         <script src=" {{ asset('assets/js/vendor.min.js') }} "></script>
+        <script src=" {{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }} "></script>
+
+        <!-- Sweet alert init js-->
+        <script src=" {{ asset('assets/js/pages/sweet-alerts.init.js') }} "></script>
         <script src=" {{ asset('assets/libs/datatables/jquery.dataTables.min.js') }} "></script>
         <script src=" {{ asset('assets/libs/datatables/dataTables.bootstrap4.js') }} "></script>
         <script src=" {{ asset('assets/libs/datatables/dataTables.responsive.min.js') }} "></script>

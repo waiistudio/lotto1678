@@ -40,6 +40,16 @@ class _vueController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Huay();
+        $data->lottoname = $request->input('lottoname');
+        $data->lottoDate = $request->input('lottoDate');
+        $data->user_id = $request->input('id');
+        $data->DateExpireT = $request->input('DateExpire');
+        // $date_test = $request->input('lottoDate');
+        // echo $date_test;
+        $data->save();
+
+        return $data;
     }
 
     /**
@@ -48,9 +58,12 @@ class _vueController extends Controller
      * @param  \App\Huay  $huay
      * @return \Illuminate\Http\Response
      */
-    public function show(Huay $huay)
+    public function show()
     {
         //
+        
+        $data = Huay::all();
+        return $data;
     }
 
     /**
@@ -82,8 +95,10 @@ class _vueController extends Controller
      * @param  \App\Huay  $huay
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Huay $huay)
+    public function destroy(Request $request)
     {
         //
+        $data = Huay::find($request->id)->delete();
+        return $data;
     }
 }

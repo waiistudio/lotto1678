@@ -7,7 +7,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueSweetalert2 from 'vue-sweetalert2';
 
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,10 +35,73 @@ console.log("Hello");
 const app = new Vue({
     el: '#app',
     data : {
-        
+        newItem:{ 'lottoname' : '','lottoDate' : '', 'DateExpire' : '','id':'1'} ,
+        isActive : false,
+        items : []
     },
-    methods:{
+    mounted: function mounted() {
+        this.getVueItems();
+    },
 
+    methods:{
+      
+         getVueItems: function getVueItems() {
+      var _this = this;
+
+      axios.get('/getItem').then(function (response) {
+        _this.items = response.data;
+      });
+    },
+        createItem: function createItem(){
+            var input = this.newItem;
+            var _this = this;
+            if(input['lottoname'] == '' || input['lottoDate'] == '' || input['lottoDate'] == ''){
+                this.isActive = true;
+               
+                    this.$swal('กรูณากรอกข้อมูลให้ครบทุกช่องค่ะ');
+                
+            }else
+            {
+                console.log(input);
+                axios.post('/vueitems', input).then(function(response){
+                    _this.newItem = {'lottoname' : '', 'lottoDate' : '', 'DateExpire': '','id':'1'}
+                    _this.getVueItems();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'เพิ่มหวยเรียบร้อยค่ะ!',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                })
+            }
+        },
+
+        deleteItem: function deleteItem(item){
+            var _this = this;
+            Swal.fire({
+                title: 'คุณต้องการลบหวยรายการนี้ใช่หรือไม่?',
+                text: "โปรดตรวจสอบให้แน่ใจอีกครั้งหนึ่ง",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText:'ยกเลิก',
+                confirmButtonText: 'ใช่ ฉันต้องการลบ'
+              }).then((result) => {
+                if (result.value) {
+                  Swal.fire(
+                    'ลบสำเร็จ!',
+                    'success'
+                  )
+                  axios.post('/deleteItem/' + item.id).then(function(response){
+                
+                    _this.getVueItems();
+                });
+                }
+              })
+           
+        }
     }
 
 });
