@@ -13,6 +13,20 @@ class _vueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function first_step()
+    {
+        //
+        $header='เพิ่มหวย';
+
+        return \view('vuetest.index' ,compact('header'));
+    }
+
     public function index()
     {
         //
@@ -100,5 +114,6 @@ class _vueController extends Controller
         //
         $data = Huay::find($request->id)->delete();
         return $data;
+        // return \view('vuetest.index');
     }
 }

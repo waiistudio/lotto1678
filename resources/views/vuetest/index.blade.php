@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Test Vue.js
+    {{ $header }}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Test Vue.js
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="lottoname" id="lottoname" placeholder="หวย..."
                                 v-model="newItem.lottoname">
-
+                                
                             <input type="hidden" name="id" value=" {{ Auth::user()->id }} " v-model="newItem.id">
                         </div>
                     </div>
@@ -56,7 +56,7 @@ Test Vue.js
                                 <th>ประเภทหวย</th>
                                 <th>งวดวันที่</th>
                                 <th>เวลาปิดรับ</th>
-                                <th> นับถอยหลัง </th>
+                                <th>  </th>
                                 <th> สถานะ </th>
                                 <th>จัดการ</th>
                             </tr>
@@ -64,14 +64,14 @@ Test Vue.js
                         <tbody>
                             <tr v-for="item in items">
                                 <th scope="row">@{{ item.lottoname }}</th>
-                                <td>@{{ item.lottoDate }} </td>
-                                <td>@{{ item.DateExpireT }} </td>
+                                <td>@{{ item.lottoDate | formatDate }} </td>
+                                <td>@{{ item.DateExpireT | formatDateTime }} </td>
                                 <td>
-                                    
+                                    <Countdown :deadline='item.DateExpireT'></Countdown>
                                 </td>
                                 <td><span class="badge badge-success">เปิดรับ</span></td>
                                 <td>
-                                    <button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="far fa-edit"></i> </button>
+                                    <button @click="showModal=true; setVal(item.id, item.lottoname, item.lottoDate, item.DateExpireT)"   class="btn btn-icon waves-effect waves-light btn-warning" data-toggle="modal" data-target="#exampleModal" > <i class="far fa-edit"></i> </button>
                                     <button @click.prevent="deleteItem(item)" class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fas fa-trash"></i> </button>
                                 </td>
                             </tr>
@@ -82,6 +82,68 @@ Test Vue.js
                 </div>
             </div>
         </div>
+
+        <modal v-if="showModal" @close="showModal=false">
+            <h3 slot="header">Edit Item</h3>
+            <div slot="body">
+                
+                <input type="hidden" disabled class="form-control" id="e_id" name="id"
+                        required  :value="this.e_id">
+                Name: <input type="text" class="form-control" id="e_name" name="name"
+                        required  :value="this.e_name">
+                Age: <input type="number" class="form-control" id="e_age" name="age"
+                required  :value="this.e_age">
+                Profession: <input type="text" class="form-control" id="e_profession" name="profession"
+                required  :value="this.e_profession">
+                
+              
+            </div>
+            <div slot="footer">
+                <button class="btn btn-default" @click="showModal = false">
+                Cancel
+              </button>
+              
+              <button class="btn btn-info" @click="editItem()">
+                Update
+              </button>
+            </div>
+        </modal>
+
+
+        <script type="text/x-template" id="modal-template">
+            <transition name="modal">
+              <div class="modal-mask">
+                <div class="modal-wrapper">
+                  <div class="modal-container">
+      
+                    <div class="modal-header">
+                      <slot name="header">
+                        default header
+                      </slot>
+                    </div>
+      
+                    <div class="modal-body">
+                      <slot name="body">
+                          
+                      </slot>
+                    </div>
+      
+                    <div class="modal-footer">
+                      <slot name="footer">
+                        
+                        
+                      </slot>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+          </script>
+
+
+  
+   
+   
         @endsection
 
         @section('sc')

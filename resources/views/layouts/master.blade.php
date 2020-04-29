@@ -330,6 +330,7 @@
         <!-- /Right-bar -->
 
         <!-- Vendor js -->
+        @yield('sc')
         <script src=" {{ asset('assets/js/vendor.min.js') }} "></script>
         <script src=" {{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }} "></script>
 
@@ -344,7 +345,7 @@
         <script src=" {{ asset('assets/js/pages/datatables.init.js') }} "></script>
 
         <!-- App js-->
-        @yield('sc')
+        
         <script src=" {{ asset('assets/js/ss.js') }} "></script>
 
 </body>
