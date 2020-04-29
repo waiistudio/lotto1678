@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -24,7 +24,7 @@ Route::get('/member', 'MemberController@showMember');
 Route::get('/add', 'MemberController@addMem');
 Route::get('/test', 'MemberController@test');
 Route::post('/saveMem', 'MemberController@saveMem');
-Route::resource('questions', 'QuestionsController')->except('show');
+Route::resource('questions', 'QuestionsController')->except('show');    
 Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show');
 // Route::get('/huay','HuayController@create');
 Route::resource('huays','HuayController');
@@ -33,3 +33,4 @@ Route::get('/vue','_vueController@first_step');
 Route::post ( '/vueitems', '_vueController@store' );
 Route::get ('getItem','_vueController@show');
 Route::post('/deleteItem/{id}','_vueController@destroy');
+Route::post('/edititems/{id}','_vueController@update');

@@ -140,11 +140,11 @@
                     </ul>
 
                     <ul class="navigation-menu">
-
+                        @if (Auth::user()->status == 1)
                         <li class="has-submenu">
                             <a href=" {{ URL::to('/vue') }} "><i class=" fas fa-clipboard-list"></i>หวย</a>
                         </li>
-
+                        @endif
                     </ul>
 
                     <ul class="navigation-menu">

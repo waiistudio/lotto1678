@@ -98,9 +98,14 @@ class _vueController extends Controller
      * @param  \App\Huay  $huay
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Huay $huay)
+    public function update(Request $request, $id)
     {
-        //
+        $data =Huay::where('id', $id)->first();
+		$data->lottoname = $request->get('val_1');
+		$data->lottoDate = $request->get('val_2');
+		$data->DateExpireT = $request->get('val_3');
+		$data->save();
+		return $data;
     }
 
     /**

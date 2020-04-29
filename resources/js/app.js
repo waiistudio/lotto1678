@@ -14,7 +14,6 @@ import Countdown from "vuejs-countdown";
 
 // If you don't need the styles, do not connect
 import "sweetalert2/dist/sweetalert2.min.css";
-
 Vue.use(VueSweetalert2);
 /**
  * The following block of code may be used to automatically register your
@@ -39,9 +38,14 @@ const app = new Vue({
     el: "#app",
     components: { Countdown },
     data: {
+        e_lottoname: "",
+        e_lottoDate: "",
+        e_id: "",
+        e_DateExpireT: "",
         newItem: { lottoname: "", lottoDate: "", DateExpire: "", id: "1" },
         isActive: false,
         showModal: false,
+        showadd: true,
         items: []
     },
     mounted: function mounted() {
@@ -56,14 +60,15 @@ const app = new Vue({
                 _this.items = response.data;
             });
         },
-        
+
         setVal(val_id, val_lottoname, val_lottoDate, val_DateExpire) {
-          this.e_id = val_id;
-          this.e_lottoname = val_lottoname;
-          this.e_lottoDate = val_lottoDate;
-          this.e_DateExpire = val_DateExpire;
-          console.log(this.e_id);
-      },
+            this.e_id = val_id;
+            this.e_lottoname = val_lottoname;
+            this.e_lottoDate = val_lottoDate;
+            this.e_DateExpireT = val_DateExpire;
+            console.log(this.e_id);
+            this.showadd = false;
+        },
 
         createItem: function createItem() {
             var input = this.newItem;
@@ -97,6 +102,27 @@ const app = new Vue({
             }
         },
 
+        editItem: function() {
+            var i_val_1 = document.getElementById("e_id");
+            var n_val_1 = document.getElementById("e_lottoname");
+            var a_val_1 = document.getElementById("e_lottoDate");
+            var p_val_1 = document.getElementById("e_DateExpireT");
+
+            axios
+                .post("/edititems/" + i_val_1.value, {
+                    val_1: n_val_1.value,
+                    val_2: a_val_1.value,
+                    val_3: p_val_1.value
+                })
+                .then(response => {
+                    this.getVueItems();
+                    this.showModal = false;
+                    this.showadd = true;
+                });
+            this.hasDeleted = true;
+            window.location = "vue";
+        },
+
         deleteItem: function deleteItem(item) {
             var _this = this;
             Swal.fire({
@@ -115,7 +141,7 @@ const app = new Vue({
                         .post("/deleteItem/" + item.id)
                         .then(function(response) {
                             _this.getVueItems();
-                            window.location ='vue';
+                            window.location = "vue";
                         });
                 }
             });

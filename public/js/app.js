@@ -71916,6 +71916,10 @@ var app = new Vue({
     Countdown: vuejs_countdown__WEBPACK_IMPORTED_MODULE_2___default.a
   },
   data: {
+    e_lottoname: "",
+    e_lottoDate: "",
+    e_id: "",
+    e_DateExpireT: "",
     newItem: {
       lottoname: "",
       lottoDate: "",
@@ -71924,6 +71928,7 @@ var app = new Vue({
     },
     isActive: false,
     showModal: false,
+    showadd: true,
     items: []
   },
   mounted: function mounted() {
@@ -71941,8 +71946,9 @@ var app = new Vue({
       this.e_id = val_id;
       this.e_lottoname = val_lottoname;
       this.e_lottoDate = val_lottoDate;
-      this.e_DateExpire = val_DateExpire;
+      this.e_DateExpireT = val_DateExpire;
       console.log(this.e_id);
+      this.showadd = false;
     },
     createItem: function createItem() {
       var input = this.newItem;
@@ -71974,6 +71980,26 @@ var app = new Vue({
         });
       }
     },
+    editItem: function editItem() {
+      var _this2 = this;
+
+      var i_val_1 = document.getElementById("e_id");
+      var n_val_1 = document.getElementById("e_lottoname");
+      var a_val_1 = document.getElementById("e_lottoDate");
+      var p_val_1 = document.getElementById("e_DateExpireT");
+      axios.post("/edititems/" + i_val_1.value, {
+        val_1: n_val_1.value,
+        val_2: a_val_1.value,
+        val_3: p_val_1.value
+      }).then(function (response) {
+        _this2.getVueItems();
+
+        _this2.showModal = false;
+        _this2.showadd = true;
+      });
+      this.hasDeleted = true;
+      window.location = "vue";
+    },
     deleteItem: function deleteItem(item) {
       var _this = this;
 
@@ -71992,7 +72018,7 @@ var app = new Vue({
           axios.post("/deleteItem/" + item.id).then(function (response) {
             _this.getVueItems();
 
-            window.location = 'vue';
+            window.location = "vue";
           });
         }
       });
