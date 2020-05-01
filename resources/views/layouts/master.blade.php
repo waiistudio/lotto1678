@@ -49,13 +49,12 @@
                         <!-- End mobile menu toggle-->
                     </li>
                     <li class="d-none d-sm-block">
-                        @if (Auth::user()->status != 1)
+
                         <div style="margin-top: 15px; margin-right: 20px;" class="app-search-box">
                             <button class="btn btn-icon waves-effect btn-secondary"> <i class=" fab fa-bitcoin">
                                     เครดิตของคุณ :</i> </button>
 
                         </div>
-                        @endif
 
                     </li>
                     <li class="d-none d-sm-block">
@@ -262,9 +261,7 @@
 
                         @endswitch
                     </small></p>
-                    @if (Auth::user()->status != 1)
                 <p class="text-muted mb-0"><small>จำนวนเครดิต :</small></p>
-                @endif
             </div>
 
             <!-- Settings -->
